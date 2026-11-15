@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ import java.util.UUID;
 
 @Getter
 @Builder
+@Table("POLICY_VERSION_DTO")
 public class PolicyVersionDto {
     @Id
     private Long id;
