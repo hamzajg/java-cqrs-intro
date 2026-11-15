@@ -1,11 +1,11 @@
 package pl.altkom.asc.lab.cqrs.intro.separatemodels.eventhandlers;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.altkom.asc.lab.cqrs.intro.separatemodels.SeparateModelsApplication;
 import pl.altkom.asc.lab.cqrs.intro.separatemodels.asserts.PolicyAsserts;
 import pl.altkom.asc.lab.cqrs.intro.separatemodels.domain.Policy;
@@ -17,7 +17,7 @@ import pl.altkom.asc.lab.cqrs.intro.separatemodels.testdatabuilders.PoliciesTest
 import java.time.LocalDate;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = SeparateModelsApplication.class)
 public class PolicyEventsProjectionsHandlerTest {
 
@@ -45,12 +45,12 @@ public class PolicyEventsProjectionsHandlerTest {
         PolicyAsserts.assertPolicyWithPolicyInfoDto(policy, byPolicyId);
 
         List<PolicyVersionsListDto.PolicyVersionInfoDto> versionsByPolicyNumber = policyVersionDtoRepository.findVersionsByPolicyNumber(policy.getNumber());
-        Assert.assertNotNull(versionsByPolicyNumber);
-        Assert.assertEquals(1, versionsByPolicyNumber.size());
-        Assert.assertEquals(1, versionsByPolicyNumber.get(0).getNumber());
+        Assertions.assertNotNull(versionsByPolicyNumber);
+        Assertions.assertEquals(1, versionsByPolicyNumber.size());
+        Assertions.assertEquals(1, versionsByPolicyNumber.get(0).getNumber());
         DateRange expectedValidityPeriod = policy.getPolicyVersions().withNumber(1).get().getVersionValidityPeriod();
-        Assert.assertEquals(expectedValidityPeriod.getFrom(), versionsByPolicyNumber.get(0).getVersionFrom());
-        Assert.assertEquals(expectedValidityPeriod.getTo(), versionsByPolicyNumber.get(0).getVersionTo());
+        Assertions.assertEquals(expectedValidityPeriod.getFrom(), versionsByPolicyNumber.get(0).getVersionFrom());
+        Assertions.assertEquals(expectedValidityPeriod.getTo(), versionsByPolicyNumber.get(0).getVersionTo());
     }
 
 }

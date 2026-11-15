@@ -1,10 +1,10 @@
 package pl.altkom.asc.lab.cqrs.intro.separatemodels.readmodel;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.altkom.asc.lab.cqrs.intro.separatemodels.SeparateModelsApplication;
 import pl.altkom.asc.lab.cqrs.intro.separatemodels.asserts.PolicyAsserts;
 import pl.altkom.asc.lab.cqrs.intro.separatemodels.domain.Policy;
@@ -12,7 +12,7 @@ import pl.altkom.asc.lab.cqrs.intro.separatemodels.testdatabuilders.PoliciesTest
 
 import java.time.LocalDate;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = SeparateModelsApplication.class)
 public class PolicyInfoDtoProjectionTest {
 
